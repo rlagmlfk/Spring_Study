@@ -3,7 +3,6 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberReopsitory;
 
 public class OrderServiceImpl implements OrderService{
     // 인터페이스에만 의존함(DIP를 지킴) -> 뭐가 들어올지 모르고 logic만 실행하면 됨
