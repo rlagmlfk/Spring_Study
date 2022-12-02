@@ -11,7 +11,8 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration // 설정(구성) 정보
+@Configuration // 설정(구성) 정보 -> @Configuration빼고 Bean만 적용하면 어떻게 될까?
+// 순수한 AppConfig 클래스가 출력됨 -> 하지만 싱글톤이 보장되지 않는다.
 public class AppConfig {
 
     // @Bean memberService -> new MemoryMemberRepository()
