@@ -8,14 +8,44 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderServiceImpl implements OrderService{
+
     // 인터페이스에만 의존함(DIP를 지킴) -> 뭐가 들어올지 모르고 logic만 실행하면 됨
+    // 필드 주입법 - 외부에서 변경불가능해 순수한 자바코드로 테스트하기 힘들다는 단점이 있음 -> 권장하지 않음
+    // @Autowired
     private final MemberRepository memberRepository;
+
+    // @Autowired
     private final DiscountPolicy discountPolicy;
+
+    // setter 주입법 - 선택, 변경가능성이 있는 상태일때 사용하는 방법
+    /*
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = "+memberRepository);
+        this.memberRepository = memberRepository;
+    }
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = "+discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+    */
+
+    // 생성자 주입법
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("1. orderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
+    /*
+    @Autowired 일반 메서드 주입 -> 한 번에 여러 필드를 주입 받음 그러나 일반적으로 사용하지 않음
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+     */
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     // FixDiscountPolicy를 RateDiscountPolicy로 변경하는 순간
     // OrderServiceImpl의 소스코드도 변경해야 함 -> OCP위반
