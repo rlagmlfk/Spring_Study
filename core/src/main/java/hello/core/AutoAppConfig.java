@@ -22,9 +22,11 @@ public class AutoAppConfig {
     // 하지만 버그가 발생할 수 있기에
     // 최근의 스프링에서는 에러메시지를 띄움(부트로 실행시)
     // application.properties에서 설정 가능
+    /*
     @Bean(name = "memoryMemberRepository")
     public MemberRepository memberRepository(){
         return new MemoryMemberRepository();
     }
+     */
 
 }
