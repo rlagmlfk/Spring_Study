@@ -32,6 +32,7 @@ public class OrderServiceImpl implements OrderService{
     */
 
     // 생성자 주입법
+    // 오직 생성자 주입법만 final 키워드 사용 가능
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("1. orderServiceImpl.OrderServiceImpl");
