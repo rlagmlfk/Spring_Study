@@ -3,10 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor // final이 붙은 값으로 생성자를 만들어줌
 public class OrderServiceImpl implements OrderService{
 
     // 인터페이스에만 의존함(DIP를 지킴) -> 뭐가 들어올지 모르고 logic만 실행하면 됨
@@ -33,12 +35,12 @@ public class OrderServiceImpl implements OrderService{
 
     // 생성자 주입법
     // 오직 생성자 주입법만 final 키워드 사용 가능
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("1. orderServiceImpl.OrderServiceImpl");
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    //@Autowired 생성자가 하나뿐이면 생략 가능
+    // public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        // System.out.println("1. orderServiceImpl.OrderServiceImpl");
+        // this.memberRepository = memberRepository;
+        // this.discountPolicy = discountPolicy;
+    // }
 
     /*
     @Autowired 일반 메서드 주입 -> 한 번에 여러 필드를 주입 받음 그러나 일반적으로 사용하지 않음
